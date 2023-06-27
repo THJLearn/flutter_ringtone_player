@@ -39,6 +39,7 @@ class FlutterRingtonePlayer {
       String? fromAsset,
       double? volume,
       bool? looping,
+      bool? usageNotification,
       bool? asAlarm}) async {
     if (fromAsset == null && android == null && ios == null) {
       throw "Please specify the sound source.";
@@ -61,6 +62,7 @@ class FlutterRingtonePlayer {
       if (looping != null) args['looping'] = looping;
       if (volume != null) args['volume'] = volume;
       if (asAlarm != null) args['asAlarm'] = asAlarm;
+      args['usageNotification'] = usageNotification ?? true;
 
       _channel.invokeMethod('play', args);
     } on PlatformException {}
